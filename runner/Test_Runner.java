@@ -9,7 +9,12 @@ import com.baseClass.BaseClass;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 
-@CucumberOptions(features = "src\\test\\java\\com\\feature\\Adactin.feature", glue = "com.stepDefinition")
+@CucumberOptions(features = "src\\test\\java\\com\\feature\\Adactin.feature", 
+glue = "com.stepDefinition" , monochrome = true ,
+plugin = {"pretty" ,
+ "json:Report/json_report.json" ,
+ "html:Report/HtmlReport" ,  /* "com.cucumber.listener.ExtentCucumberFormatter:Report/adactinlogin.html" */  } ) 
+
 @RunWith(Cucumber.class)
 public class Test_Runner {
 public static WebDriver driver;
@@ -18,13 +23,13 @@ public static WebDriver driver;
    public static void startUp() {
      driver =  BaseClass.Browser_lu();
 }
-	
+/*
 @AfterClass
    public static void tearDown()
    {
 	driver.close();
 	   
-   }
+   } */
   
 	
 }
